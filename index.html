@@ -1,349 +1,511 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cool Cat Playground</title>
-  <meta name="description" content="Daily Portal Z風のレイアウトを再現したスタティックなデモページ。" />
-  <style>
-    /* --------------------------------------
-       CSS RESET (mini)
-    -------------------------------------- */
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    img{max-width:100%;display:block;height:auto}
-    a{color:inherit;text-decoration:none}
-    ul{margin:0;padding:0;list-style:none}
-    /* --------------------------------------
-       THEME TOKENS
-    -------------------------------------- */
-    :root{
-	  --bg:#fffdf6;            /* soft cream background */
-	  --paper:#ffffff;         /* article card background */
-	  --ink:#211e12;           /* main text color */
-	  --ink-dim:#5a5546;       /* secondary text color */
-	  --brand:#ffb703;         /* logo/accent (yellow) */
-	  --brand-2:#e85d04;       /* reddish-orange */
-	  --brand-3:#118ab2;       /* blue */
-	  --line:#efe6c7;          /* border/line color */
-	  --chip:#fff3bf;          /* tag background */
-      --shadow:0 6px 24px rgba(0,0,0,.06),0 2px 8px rgba(0,0,0,.04);
-      --radius-xl:20px;
-      --radius-lg:14px;
-      --radius-md:10px;
-      --radius-sm:8px;
-      --content-w:1200px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Kanit&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoolCat's Hobby & Daily Diary</title>
+<style>
 
-    body{background:var(--bg);color:var(--ink);font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans JP","Hiragino Kaku Gothic ProN","Meiryo",sans-serif;}
+body, h1, h2, h3, h4, h5, h6, p, li, a, button {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive, 'Yuji Syuku', 'Kanit', sans-serif;
+}
 
-    /* --------------------------------------
-       HEADER
-    -------------------------------------- */
-    .site-header{position:sticky;top:0;z-index:50;background:rgba(255,253,246,.9);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line)}
-    .header-inner{max-width:var(--content-w);margin:auto;display:flex;align-items:center;gap:16px;padding:10px 16px}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.5px}
-    .logo-badge{inline-size:38px;block-size:38px;border-radius:50%;background:conic-gradient(from 180deg,var(--brand),#ff000d,var(--brand),#ffd166);display:grid;place-items:center;box-shadow:var(--shadow)}
-    .logo-badge span{font-weight:900}
-    .logo-title{font-size:1.2rem}
+* { margin:0; padding:0; box-sizing:border-box;}
 
-    .nav{margin-inline-start:auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-    .nav a{padding:8px 10px;border-radius:var(--radius-sm)}
-    .nav a:hover{background:#fffbe6}
+body {
+    background:#fdf7e3; /* soft paper background */
+    color:#2c2c2c;
+    line-height:1.7;
+    overflow-x:hidden;
+}
 
-    .cta{margin-inline-start:8px;background:var(--brand-2);color:white;padding:10px 14px;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}
+header {
+    background:#f5e1b8; /* soft notebook cover color */
+    color:#3b2f2f; /* dark brown for text */
+    padding:3rem 1rem 2rem 1rem; /* taller like a cover */
+    text-align:center;
+    border-bottom: 3px dashed #f5c16c; /* stitched line effect */
+    position: relative;
+}
 
-    /* --------------------------------------
-       HERO BAR
-    -------------------------------------- */
-    .hero{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff9e6}
-    .hero-inner{max-width:var(--content-w);margin:auto;padding:12px 16px;display:flex;gap:16px;align-items:center}
-    .hero .dot{inline-size:10px;block-size:10px;border-radius:50%;background:var(--brand-2)}
-    .hero p{margin:0;color:var(--ink-dim)}
+header h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #5a3e1b; /* warm ink color */
+    margin-bottom: 0.3rem;
+    animation: fadeInDown 1s ease forwards;
+    opacity: 0;
+}
 
-    /* --------------------------------------
-       MAIN GRID
-    -------------------------------------- */
-    .wrap{max-width:var(--content-w);margin:auto;padding:20px 16px}
-    .grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+header p {
+    font-size:1.2rem;
+    margin-top:0.5rem;
+    color:#3b2f2f;
+    animation:fadeIn 1s 0.5s forwards;
+    opacity:0;
+}
 
-    /* Article list */
-    .articles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+nav {
+    background:#fffdf5; 
+    display:flex;
+    justify-content:center;
+    padding:0.7rem 0;
+    border-bottom: 3px dashed #f5c16c; 
+    /* remove inset shadow */
+    /* box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1); */
+}
 
-    .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
-    .thumb{aspect-ratio:16/9;background:#f2efe2;overflow:hidden}
-    .thumb img{width:100%;height:100%;object-fit:cover}
-    .card-body{padding:14px}
-    .label-row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
-    .cat{font-size:.72rem;font-weight:700;padding:4px 8px;border-radius:999px;background:var(--chip);border:1px solid var(--line)}
-    .date{margin-left:auto;font-size:.75rem;color:var(--ink-dim)}
-    .title{font-weight:800;line-height:1.3;margin:6px 0}
-    .excerpt{color:var(--ink-dim);font-size:.95rem}
+nav a {
+    color:#3b2f2f;
+    text-decoration:none;
+    margin:0 1rem;
+    font-weight:bold;
+    font-size:1rem;
+    padding:0.5rem 1rem;
+    border-radius:6px 6px 0 0; /* rounded top like notebook tabs */
+    background:#fff9c4; /* sticky-tab style */
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
 
-    .meta-row{display:flex;align-items:center;gap:10px;margin-top:12px;color:var(--ink-dim);font-size:.9rem}
-    .author{display:flex;align-items:center;gap:8px}
-    .avatar{inline-size:26px;block-size:26px;border-radius:50%;background:#ffe8cc;border:1px solid var(--line)}
+nav a:hover {
+    transform: translateY(-3px);
+    background:#f5e1b8; /* slightly darker sticky tab on hover */
+    color:#3b2f2f;
+}
 
-    .card:hover{transform:translateY(-2px)}
+main { max-width:900px; margin:2rem auto; padding:0 1rem; }
 
-    /* --------------------------------------
-       SIDEBAR
-    -------------------------------------- */
-    .sidebar{display:grid;gap:16px;align-content:start}
-    .box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:var(--shadow);padding:16px}
-    .box h3{margin:0 0 10px;font-size:1.05rem}
+section {
+    background:#fffdf5; /* off-white paper */
+    padding:2rem 2rem;
+    margin-bottom:2rem;
+    border-radius:12px;
+    box-shadow:0 6px 12px rgba(0,0,0,0.1);
+    border-left: 4px solid #f5c16c; /* notebook page edge accent */
+    position: relative;
+    opacity:0;
+    transform: translateY(30px);
+    transition:all 0.8s ease;
+}
 
-    .member{display:grid;gap:10px}
-    .member .cta-big{display:inline-block;background:var(--brand);padding:12px 14px;border-radius:14px;font-weight:800}
-    .member small{color:var(--ink-dim)}
+section h2 { margin-bottom:1rem; color:#5a3e1b; border-bottom:1px solid #ecf0f1; padding-bottom:0.3rem; }
 
-    .ranking li+li{margin-top:10px}
-    .ranking a{display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:center}
-    .ranking .n{inline-size:36px;block-size:36px;border-radius:10px;background:#fff5cf;display:grid;place-items:center;font-weight:800;border:1px solid var(--line)}
+ul li {
+    list-style: none;
+    position: relative;
+    padding-left: 1.8rem;
+    transition: transform 0.3s ease, color 0.3s ease; /* keep smooth */
+}
 
-    .tags{display:flex;flex-wrap:wrap;gap:8px}
-    .tag{background:var(--chip);border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:.85rem}
+ul li::before {
+    content: "⭐"; /* or your image */
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    transition: transform 0.3s ease; /* smooth movement */
+}
 
-    /* --------------------------------------
-       SECTION HEADER
-    -------------------------------------- */
-    .section-head{display:flex;align-items:center;gap:10px;margin:18px 0}
-    .section-head .bar{inline-size:6px;block-size:20px;border-radius:6px;background:linear-gradient(180deg,var(--brand-2),var(--brand))}
-    .section-head h2{margin:0;font-size:1.05rem}
+ul li:hover {
+    transform: translateX(10px); /* moves both li and pseudo-element */
+}
 
-    /* --------------------------------------
-       FOOTER
-    -------------------------------------- */
-    .site-footer{margin-top:30px;border-top:1px solid var(--line);background:#fffbe6}
-    .footer-inner{max-width:var(--content-w);margin:auto;padding:20px 16px;display:grid;gap:12px}
-    .footer-nav{display:flex;flex-wrap:wrap;gap:12px}
-    .copyright{color:var(--ink-dim);font-size:.9rem}
 
-    /* --------------------------------------
-       RESPONSIVE
-    -------------------------------------- */
-    @media (max-width:1100px){
-      .articles{grid-template-columns:repeat(2,1fr)}
-      .grid{grid-template-columns:1fr 300px}
-    }
-    @media (max-width:860px){
-      .grid{grid-template-columns:1fr}
-      .articles{grid-template-columns:1fr}
-    }
-  </style>
+/*
+ul li {
+    list-style: none;
+    position: relative;
+    padding-left: 1.8rem;
+}
+
+ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.2rem; 
+    width: 1rem;
+    height: 1rem;
+    background-image: url('star.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+✅ Notes:
+
+If you want to use different icons for hobbies, diary, or about lists, you can assign different classes to each ul and customize their ::before.
+
+Make sure your custom image is small enough to look neat (e.g., 16x16 or 24x24 px).
+*/
+
+
+li:hover { transform: translateX(10px); color:#3498db; }
+li .entry-content { max-height:0; overflow:hidden; padding-left:1rem; color:#555; transition:max-height 0.5s ease, padding 0.5s ease; }
+
+footer {
+    background:#fffdf5; /* notebook paper color */
+    color:#3b2f2f; /* dark brown text */
+    text-align:center;
+    padding:1.5rem 1rem;
+    margin-top:2rem;
+    font-size:0.9rem;
+    border-top: 3px dashed #f5c16c; /* stitched bottom line */
+    box-shadow: inset 0 1px 0 rgba(0,0,0,0.05); /* subtle top shadow */
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+footer .social-icons a img {
+    width: 28px;   /* adjust size as needed */
+    height: 28px;
+    transition: transform 0.3s;
+}
+
+footer .social-icons a:hover img {
+    transform: translateY(-2px); /* subtle hover animation */
+}
+
+
+.add-entry {
+    display:inline-block;
+    margin-top:1rem;
+    padding:0.5rem 1rem;
+    background:#f5e1b8;
+    color:#3b2f2f;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:0.95rem;
+    font-weight:bold;
+    transition:background 0.3s, transform 0.3s;
+}
+
+.add-entry:hover {
+    background:#f3d78c;
+    transform: scale(1.05);
+}
+
+.tip {
+    background:#fff9c4;
+    padding:0.6rem 1rem;
+    border-left:4px solid #f5c16c;
+    border-radius:4px;
+    display:inline-block;
+    margin-bottom:1rem;
+    font-style:italic;
+    opacity:0;
+    transform: translateX(-20px);
+    transition: all 1s ease;
+}
+
+.entry-content {
+    background: rgba(245, 241, 228, 0.4);
+    padding-left:1rem;
+    margin-top:0.2rem;
+    border-left: 2px solid #f5c16c;
+    overflow:hidden;
+    transition:max-height 0.5s ease, padding 0.5s ease;
+}
+
+/* Keyframes */
+@keyframes fadeIn { to {opacity:1;} }
+@keyframes fadeInDown { to {opacity:1; transform:translateY(0);} }
+
+.lang-switcher {
+    position:absolute;
+    top:1.5rem;
+    right:1.2rem;
+    font-size:1rem;
+    padding:0.5rem 1.2rem;
+    border-radius:8px 8px 0 0; /* notebook tab shape */
+    border:1px solid #bdc3c7;
+    background:#fff9c4;
+    color:#3b2f2f;
+    cursor:pointer;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+}
+
+.lang-switcher:hover {
+    background:#f5e1b8;
+}
+
+</style>
 </head>
 <body>
-  <!-- ============ HEADER ============ -->
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a class="logo" href="#" aria-label="ホーム">
-        <div class="logo-badge" aria-hidden="true"><span>CC</span></div>
-        <div class="logo-title">Coolcat Playground</div>
-      </a>
-      <nav class="nav" role="navigation" aria-label="MainNavi">
-        <a href="https://wilukthd.github.io/testarea/Blog1.html">Note</a>
-        <a href="#">Virtual</a>
-        <a href="#">Free Research</a>
-        <a href="#">ETC.</a>
-        <a class="cta" href="#">Donate Catfood</a>
-      </nav>
-    </div>
-  </header>
 
-  <!-- ============ HERO / UPDATE BAR ============ -->
-<aside class="hero" aria-label="Updates">
-<div class="hero-inner">
-<span class="dot" aria-hidden="true"></span>
-<p>Today we published <strong>6 articles</strong>. Take a break and enjoy!</p>
-</div>
-</aside>
+<header>
+    <h1 id="title">CoolCat's Hobby & Daily Diary</h1>
+    <p id="subtitle">Elegant musings on hobbies and daily life</p>
+    <select id="lang-switcher" class="lang-switcher">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="th">ไทย</option>
+    </select>
+</header>
 
-<!-- ============ MAIN ============ -->
-<main class="wrap" role="main">
-  <div class="grid">
-    <section>
-      <div class="section-head"><span class="bar" aria-hidden="true"></span><h2>Today's Reads</h2></div>
-      <div class="articles">
-        <!-- Article Card x 6 (Sample) -->
-        <!-- CARD 1 -->
-        <article class="card">
-          <a href="#" class="thumb" aria-label="Sample Article 1"><img src="https://picsum.photos/800/450?random=1" alt="Article Thumbnail"></a>
-          <div class="card-body">
-            <div class="label-row">
-              <span class="cat">Try It</span>
-              <time class="date" datetime="2025-08-22">2025/08/22</time>
-            </div>
-            <h3 class="title"><a href="#">Extended a 20m Flowing Somen at Home, Cat Found the Shortest Path</a></h3>
-            <p class="excerpt">Summer craft series. How quickly can a cat learn to navigate a maze of bamboo and plastic indoors?</p>
-            <div class="meta-row">
-              <div class="author"><span class="avatar" aria-hidden="true"></span><span>ภาษาไทยได้มั้ย</span></div>
-            </div>
-          </div>
-        </article>
-        <!-- CARD 2 -->
-        <article class="card">
-          <a href="#" class="thumb" aria-label="Sample Article 2"><img src="https://picsum.photos/800/450?random=2" alt="Article Thumbnail"></a>
-          <div class="card-body">
-            <div class="label-row">
-              <span class="cat">Observation</span>
-              <time class="date" datetime="2025-08-21">2025/08/21</time>
-            </div>
-            <h3 class="title"><a href="#">Tour Pressing the “Least Sold” Button on Vending Machines Across Japan</a></h3>
-            <p class="excerpt">I like what isn’t popular. A small road movie visiting such drinks.</p>
-            <div class="meta-row">
-              <div class="author"><span class="avatar" aria-hidden="true"></span><span>Freelancer Miura</span></div>
-            </div>
-          </div>
-        </article>
-        <!-- CARD 3 -->
-        <article class="card">
-          <a href="#" class="thumb" aria-label="Sample Article 3"><img src="https://picsum.photos/800/450?random=3" alt="Article Thumbnail"></a>
-          <div class="card-body">
-            <div class="label-row">
-              <span class="cat">Craft</span>
-              <time class="date" datetime="2025-08-20">2025/08/20</time>
-            </div>
-            <h3 class="title"><a href="#">Relaxing to the Limit in a Cardboard Hot Spring</a></h3>
-            <p class="excerpt">A makeshift outdoor bath made from empty cardboard and cloth tape. Steam is left to imagination.</p>
-            <div class="meta-row">
-              <div class="author"><span class="avatar" aria-hidden="true"></span><span>Editorial Team Sato</span></div>
-            </div>
-          </div>
-        </article>
-        <!-- CARD 4 -->
-        <article class="card">
-          <a href="#" class="thumb" aria-label="Sample Article 4"><img src="https://picsum.photos/800/450?random=4" alt="Article Thumbnail"></a>
-          <div class="card-body">
-            <div class="label-row">
-              <span class="cat">Geography</span>
-              <time class="date" datetime="2025-08-19">2025/08/19</time>
-            </div>
-            <h3 class="title"><a href="#">Collected Unnamed Slopes and Declared the Top 100 Slopes</a></h3>
-            <p class="excerpt">Unnamed slopes are always steep. Naming rituals proceed solemnly, despite shortness of breath.</p>
-            <div class="meta-row">
-              <div class="author"><span class="avatar" aria-hidden="true"></span><span>Student Writer Inoue</span></div>
-            </div>
-          </div>
-        </article>
-        <!-- CARD 5 -->
-        <article class="card">
-          <a href="#" class="thumb" aria-label="Sample Article 5"><img src="https://picsum.photos/800/450?random=5" alt="Article Thumbnail"></a>
-          <div class="card-body">
-            <div class="label-row">
-              <span class="cat">Cooking</span>
-              <time class="date" datetime="2025-08-18">2025/08/18</time>
-            </div>
-            <h3 class="title"><a href="#">Making the “Best Last Bite” of Curry from the Start</a></h3>
-            <p class="excerpt">The science of reproducing the miracle at the bottom of the pot. Forever on the edge of burning.</p>
-            <div class="meta-row">
-              <div class="author"><span class="avatar" aria-hidden="true"></span><span>Home Cook Writer Tamaki</span></div>
-            </div>
-          </div>
-        </article>
-        <!-- CARD 6 -->
-        <article class="card">
-          <a href="#" class="thumb" aria-label="Sample Article 6"><img src="https://picsum.photos/800/450?random=6" alt="Article Thumbnail"></a>
-          <div class="card-body">
-            <div class="label-row">
-              <span class="cat">Experiment</span>
-              <time class="date" datetime="2025-08-17">2025/08/17</time>
-            </div>
-            <h3 class="title"><a href="#">Used Only “Tin Can Phones” for a Week, Made More Friends</a></h3>
-            <p class="excerpt">Distance ended up feeling shorter. Both physically and mentally.</p>
-            <div class="meta-row">
-              <div class="author"><span class="avatar" aria-hidden="true"></span><span>Teacher Writer Ota</span></div>
-            </div>
-          </div>
-        </article>
-      </div>
+<nav>
+    <a href="#hobbies" id="nav-hobbies">Hobbies</a>
+    <a href="#daily-diary" id="nav-diary">Daily Diary</a>
+    <a href="#about" id="nav-about">About Me</a>
+</nav>
 
-<div class="section-head"><span class="bar" aria-hidden="true"></span><h2>Past Features</h2></div>
-<div class="articles">
-  <!-- more cards (short version) -->
-  <article class="card">
-    <a href="#" class="thumb"><img src="https://picsum.photos/800/450?random=7" alt></a>
-    <div class="card-body">
-      <div class="label-row"><span class="cat">Feature</span><time class="date">2025/07/31</time></div>
-      <h3 class="title"><a href="#">Mystery Sign Championship 2025</a></h3>
-      <p class="excerpt">Awarded top honors to the pictograms asserting themselves at the corners of the city.</p>
-    </div>
-  </article>
-  <article class="card">
-    <a href="#" class="thumb"><img src="https://picsum.photos/800/450?random=8" alt></a>
-    <div class="card-body">
-      <div class="label-row"><span class="cat">Feature</span><time class="date">2025/07/10</time></div>
-      <h3 class="title"><a href="#">Baking Local Melon Breads to Perfection</a></h3>
-      <p class="excerpt">Gathering representatives of crispy surfaces from all over the country.</p>
-    </div>
-  </article>
-  <article class="card">
-    <a href="#" class="thumb"><img src="https://picsum.photos/800/450?random=9" alt></a>
-    <div class="card-body">
-      <div class="label-row"><span class="cat">Feature</span><time class="date">2025/06/18</time></div>
-      <h3 class="title"><a href="#">Walking Around a Fictional Station Using Old Maps</a></h3>
-      <p class="excerpt">Exploring a “might-have-existed” station, recreated from old maps.</p>
-    </div>
-  </article>
-</div>
-</section>
+<main>
+    <section id="hobbies" class="fade-section">
+        <h2 id="hobbies-title">My Hobbies</h2>
+        <p class="tip" id="hobby-tip">Loading tip...</p>
+        <ul id="hobby-list">
+            <li>Photography: capturing life’s subtle moments</li>
+            <li>Cooking: experimenting with flavors</li>
+            <li>Reading: exploring stories and knowledge</li>
+            <li>Gardening: nurturing plants and mindfulness</li>
+            <li>Sketching: drawing inspiration from everyday life</li>
+        </ul>
+        <button class="add-entry" id="add-hobby">Add a Hobby</button>
+    </section>
 
-<!-- ============ SIDEBAR ============ -->
-<aside class="sidebar" aria-label="Sidebar">
-  <section class="box member">
-    <h3>Supporters Club (Membership)</h3>
-    <p>Monthly support to help run the site. Benefits include exclusive articles and early event access.</p>
-    <a class="cta-big" href="#">Join & Support</a>
-    <small>Cancel anytime</small>
-  </section>
+    <section id="daily-diary" class="fade-section">
+        <h2 id="diary-title">Daily Diary</h2>
+        <ul id="diary-list">
+            <li onclick="toggleEntry(this)">
+                <span class="entry-date">2025-09-12: Enjoyed a quiet walk in the park. 🍂</span>
+                <div class="entry-content">Felt calm and inspired by nature. Noticed the new cherry blossoms starting to bloom.</div>
+            </li>
+            <li onclick="toggleEntry(this)">
+                <span class="entry-date">2025-09-13: Tried a new pasta recipe; it was delightful. 🍝</span>
+                <div class="entry-content">Used garlic and cherry tomatoes. Might try adding shrimp next time.</div>
+            </li>
+            <li onclick="toggleEntry(this)">
+                <span class="entry-date">2025-09-14: Read a few chapters from a novel. 📖</span>
+                <div class="entry-content">The story is intense, exploring themes of adventure and friendship.</div>
+            </li>
+        </ul>
+        <button class="add-entry" id="add-diary">Add a Diary Entry</button>
+    </section>
 
-  <section class="box">
-    <h3>Most Read Articles</h3>
-    <ul class="ranking">
-      <li><a href="#"><span class="n">1</span><span>Can You Hula Hoop with Frozen Udon?</span></a></li>
-      <li><a href="#"><span class="n">2</span><span>Device Just for Enjoying Ramen Water Drain</span></a></li>
-      <li><a href="#"><span class="n">3</span><span>Traveling Only by Smartphone Step Count</span></a></li>
-      <li><a href="#"><span class="n">4</span><span>Living Only by Watching Red Traffic Lights</span></a></li>
-      <li><a href="#"><span class="n">5</span><span>Making a Planetarium with a Plastic Umbrella</span></a></li>
-    </ul>
-  </section>
-
-  <section class="box">
-    <h3>Tags</h3>
-    <div class="tags">
-      <a class="tag" href="#">Try It</a>
-      <a class="tag" href="#">Observation</a>
-      <a class="tag" href="#">Cooking</a>
-      <a class="tag" href="#">Craft</a>
-      <a class="tag" href="#">Travel</a>
-      <a class="tag" href="#">Geography</a>
-      <a class="tag" href="#">Experiment</a>
-      <a class="tag" href="#">Review</a>
-    </div>
-  </section>
-
-  <section class="box">
-    <h3>Announcements</h3>
-    <p>8/30 Online Event! Theme: “The Smallest Discovery This Summer.”</p>
-  </section>
-</aside>
-</div>
+    <section id="about" class="fade-section">
+        <h2 id="about-title">About Me</h2>
+        <p id="about-text">Hello! I'm CoolCat. This is my little digital space to reflect on hobbies, daily experiences, and moments that bring joy. I prefer a simple, classy, and calm approach to sharing my life.</p>
+    </section>
 </main>
 
-<!-- ============ FOOTER ============ -->
-<footer class="site-footer" role="contentinfo">
-  <div class="footer-inner">
-    <nav class="footer-nav" aria-label="Footer Navigation">
-      <a href="#">About</a>
-      <a href="#">English</a>
-      <a href="#">Advertising</a>
-      <a href="#">Contact</a>
-      <a href="#">Privacy Policy</a>
-    </nav>
-    <div class="copyright">© 2025 Demo Site. This page is a layout reproduction for learning purposes (not affiliated with any real site).</div>
-  </div>
+<footer>
+    <div class="social-icons">
+        <a href="https://instagram.com/yourhandle" target="_blank" aria-label="Instagram">
+            <img src="ccigicon.jpg" alt="Instagram">
+        </a>
+        <a href="https://youtube.com/yourhandle" target="_blank" aria-label="YouTube">
+            <img src="ccyticon.jpg" alt="YouTube">
+        </a>
+        <a href="https://twitter.com/yourhandle" target="_blank" aria-label="X / Twitter">
+            <img src="ccxicon.jpg" alt="Twitter">
+        </a>
+        <a href="mailto:your@email.com" aria-label="Email">
+            <img src="ccmailicon.jpg" alt="Email">
+        </a>
+    </div>
+    <p id="footer-text">&copy; 2025 CoolCat's Hobby & Daily Diary. All rights reserved.</p>
 </footer>
+
+<script>
+const translations = {
+    en: {
+        title: "CoolCat's Hobby & Daily Diary",
+        subtitle: "Elegant musings on hobbies and daily life",
+        nav: { hobbies: "Hobbies", diary: "Daily Diary", about: "About Me" },
+        hobbiesTitle: "My Hobbies",
+        hobbyList: [
+            "Photography: capturing life’s subtle moments",
+            "Cooking: experimenting with flavors",
+            "Reading: exploring stories and knowledge",
+            "Gardening: nurturing plants and mindfulness",
+            "Sketching: drawing inspiration from everyday life"
+        ],
+        diaryTitle: "Daily Diary",
+        diaryList: [
+            { date:"2025-09-12: Enjoyed a quiet walk in the park. 🍂", content:"Felt calm and inspired by nature. Noticed the new cherry blossoms starting to bloom." },
+            { date:"2025-09-13: Tried a new pasta recipe; it was delightful. 🍝", content:"Used garlic and cherry tomatoes. Might try adding shrimp next time." },
+            { date:"2025-09-14: Read a few chapters from a novel. 📖", content:"The story is intense, exploring themes of adventure and friendship." }
+        ],
+        addHobby: "Add a Hobby",
+        addDiary: "Add a Diary Entry",
+        aboutTitle: "About Me",
+        aboutText: "Hello! I'm CoolCat. This is my little digital space to reflect on hobbies, daily experiences, and moments that bring joy. I prefer a simple, classy, and calm approach to sharing my life.",
+        tips: [
+            "Try a new skill this week – small progress counts!",
+            "Photography tip: explore shadows for dramatic shots.",
+            "Cooking tip: spice levels can completely change a dish.",
+            "Gardening tip: morning sunlight helps most plants thrive.",
+            "Reading tip: dedicate 20 minutes before bed for calm reading."
+        ],
+        footer: "© 2025 CoolCat's Hobby & Daily Diary. All rights reserved."
+    },
+    ja: {
+        title: "クールキャットの趣味と日記",
+        subtitle: "趣味と日常生活のエレガントな記録",
+        nav: { hobbies: "趣味", diary: "日記", about: "自己紹介" },
+        hobbiesTitle: "私の趣味",
+        hobbyList: [
+            "写真撮影：人生のさりげない瞬間を捉える",
+            "料理：味の探求と実験",
+            "読書：物語と知識の探検",
+            "ガーデニング：植物を育て心を癒す",
+            "スケッチ：日常からインスピレーションを描く"
+        ],
+        diaryTitle: "日記",
+        diaryList: [
+            { date:"2025-09-12: 公園を静かに散歩しました。🍂", content:"自然に癒され、桜の花が咲き始めているのに気づきました。" },
+            { date:"2025-09-13: 新しいパスタ料理を作りました。とても美味しかった！🍝", content:"ニンニクとミニトマトを使いました。次はエビを加えてみたいです。" },
+            { date:"2025-09-14: 小説を数章読みました。📖", content:"物語は冒険と友情をテーマにしていて、とても引き込まれます。" }
+        ],
+        addHobby: "趣味を追加",
+        addDiary: "日記を追加",
+        aboutTitle: "自己紹介",
+        aboutText: "こんにちは！クールキャットです。ここは趣味や日常の体験、喜びを分かち合うための小さなデジタル空間です。シンプルで落ち着いた雰囲気を大切にしています。",
+        tips: [
+            "今週は新しいスキルに挑戦してみましょう！",
+            "写真のコツ：影を利用してドラマチックに。",
+            "料理のコツ：スパイス次第で全く違う味に！",
+            "ガーデニングのコツ：朝の日光が多くの植物に最適。",
+            "読書のコツ：寝る前に20分読書すると落ち着きます。"
+        ],
+        footer: "© 2025 クールキャットの趣味と日記. 無断転載を禁ず。"
+    },
+    th: {
+        title: "ไดอารี่และงานอดิเรกของคูลแคท",
+        subtitle: "บันทึกเรื่องราวเกี่ยวกับงานอดิเรกและชีวิตประจำวัน",
+        nav: { hobbies: "งานอดิเรก", diary: "ไดอารี่", about: "เกี่ยวกับฉัน" },
+        hobbiesTitle: "งานอดิเรกของฉัน",
+        hobbyList: [
+            "การถ่ายภาพ: เก็บช่วงเวลาที่แสนพิเศษ",
+            "การทำอาหาร: ทดลองรสชาติใหม่ๆ",
+            "การอ่านหนังสือ: สำรวจเรื่องราวและความรู้",
+            "การทำสวน: ดูแลต้นไม้และจิตใจ",
+            "การวาดรูป: หยิบแรงบันดาลใจจากชีวิตประจำวัน"
+        ],
+        diaryTitle: "ไดอารี่",
+        diaryList: [
+            { date:"2025-09-12: เดินเล่นในสวนอย่างเงียบสงบ 🍂", content:"รู้สึกสงบและได้รับแรงบันดาลใจจากธรรมชาติ เห็นดอกซากุระเริ่มบาน" },
+            { date:"2025-09-13: ทดลองทำพาสต้าสูตรใหม่ 🍝", content:"ใช้กระเทียมและมะเขือเทศเชอร์รี่ ครั้งหน้าจะลองใส่กุ้งดู" },
+            { date:"2025-09-14: อ่านนิยายไปหลายบท 📖", content:"เรื่องราวเข้มข้น เต็มไปด้วยการผจญภัยและมิตรภาพ" }
+        ],
+        addHobby: "เพิ่มงานอดิเรก",
+        addDiary: "เพิ่มบันทึกไดอารี่",
+        aboutTitle: "เกี่ยวกับฉัน",
+        aboutText: "สวัสดีครับ! ฉันคือคูลแคท ที่นี่คือพื้นที่เล็กๆ ของฉันเพื่อบันทึกเรื่องราว งานอดิเรก และสิ่งที่ทำให้มีความสุข ฉันชอบบรรยากาศที่เรียบง่ายและสงบ",
+        tips: [
+            "ลองทำสิ่งใหม่ๆ ในสัปดาห์นี้ ความก้าวหน้าเล็กๆ ก็สำคัญ!",
+            "เคล็ดลับถ่ายภาพ: เล่นกับเงาเพื่อภาพที่น่าทึ่ง",
+            "เคล็ดลับทำอาหาร: ปริมาณเครื่องเทศเปลี่ยนรสชาติได้",
+            "เคล็ดลับทำสวน: แสงแดดยามเช้าช่วยให้พืชเจริญเติบโตดีที่สุด",
+            "เคล็ดลับการอ่าน: อ่านก่อนนอน 20 นาทีช่วยให้จิตใจสงบ"
+        ],
+        footer: "© 2025 ไดอารี่และงานอดิเรกของคูลแคท สงวนลิขสิทธิ์"
+    }
+};
+
+// update content
+function applyLanguage(lang) {
+    var t = translations[lang];
+
+    document.getElementById("title").textContent = t.title;
+    document.getElementById("subtitle").textContent = t.subtitle;
+
+    document.getElementById("nav-hobbies").textContent = t.nav.hobbies;
+    document.getElementById("nav-diary").textContent = t.nav.diary;
+    document.getElementById("nav-about").textContent = t.nav.about;
+
+    document.getElementById("hobbies-title").textContent = t.hobbiesTitle;
+
+    // ES5-compatible hobby list
+    var hobbyHTML = [];
+    for (var i = 0; i < t.hobbyList.length; i++) {
+        hobbyHTML.push('<li>' + t.hobbyList[i] + '</li>');
+    }
+    document.getElementById("hobby-list").innerHTML = hobbyHTML.join('');
+
+    document.getElementById("add-hobby").textContent = t.addHobby;
+
+    document.getElementById("diary-title").textContent = t.diaryTitle;
+
+    // ES5-compatible diary list
+    var diaryHTML = [];
+    for (var j = 0; j < t.diaryList.length; j++) {
+        diaryHTML.push(
+            '<li onclick="toggleEntry(this)">' +
+                '<span class="entry-date">' + t.diaryList[j].date + '</span>' +
+                '<div class="entry-content">' + t.diaryList[j].content + '</div>' +
+            '</li>'
+        );
+    }
+    document.getElementById("diary-list").innerHTML = diaryHTML.join('');
+
+    document.getElementById("add-diary").textContent = t.addDiary;
+
+    document.getElementById("about-title").textContent = t.aboutTitle;
+    document.getElementById("about-text").textContent = t.aboutText;
+
+    // random tip
+    var tipEl = document.getElementById("hobby-tip");
+    tipEl.textContent = t.tips[Math.floor(Math.random() * t.tips.length)];
+    tipEl.style.opacity = 1;
+    tipEl.style.transform = 'translateX(0)';
+
+    document.getElementById("footer-text").textContent = t.footer;
+}
+
+// init
+document.getElementById("lang-switcher").addEventListener("change", function(e) {
+    applyLanguage(e.target.value);
+});
+applyLanguage("en"); // default English
+
+// diary collapse
+function toggleEntry(el) {
+    const content = el.querySelector('.entry-content');
+    if (content.style.maxHeight) {
+        // Collapse
+        content.style.maxHeight = null;
+        content.style.padding = "0 0 0 1rem";
+    } else {
+        // Expand with extra buffer
+        const extraSpace = 20; // 20px buffer
+        content.style.maxHeight = (content.scrollHeight + extraSpace) + "px";
+        content.style.padding = "0.8rem 0 0.8rem 1rem"; // slightly more padding
+    }
+}
+
+
+// fade sections
+var fadeSections = document.querySelectorAll('.fade-section');
+
+function fadeInOnScroll() {
+    for (var i = 0; i < fadeSections.length; i++) {
+        var section = fadeSections[i];
+        var rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            section.style.opacity = 1;
+            section.style.transform = 'translateY(0)';
+        }
+    }
+}
+
+window.addEventListener('scroll', fadeInOnScroll);
+window.addEventListener('load', fadeInOnScroll);
+
+</script>
 
 </body>
 </html>
+
+
+
 
 
