@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Kanit&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&family=Yuji+Syuku&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CoolCat's Hobby & Daily Diary</title>
 <style>
 
 body, h1, h2, h3, h4, h5, h6, p, li, a, button {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive, 'Yuji Syuku', 'Kanit', sans-serif;
+    font-family: 'Kanit', sans-serif; /* A clean, modern sans-serif */
 }
 
 * { margin:0; padding:0; box-sizing:border-box;}
 
 body {
-    background:#fdf7e3; /* soft paper background */
-    color:#2c2c2c;
+    background: #0A192F; /* Deep navy background */
+    color: #E6E6FA; /* Light lavender for contrast */
     line-height:1.7;
     overflow-x:hidden;
 }
 
 header {
-    background:#f5e1b8; /* soft notebook cover color */
-    color:#3b2f2f; /* dark brown for text */
-    padding:3rem 1rem 2rem 1rem; /* taller like a cover */
+    background: #1A2E4B; /* Slightly lighter navy for header */
+    color: #E6E6FA;
+    padding:3rem 1rem 2rem 1rem;
     text-align:center;
-    border-bottom: 3px dashed #f5c16c; /* stitched line effect */
+    border-bottom: 3px solid #64FFDA; /* Bright accent border */
     position: relative;
 }
 
 header h1 {
     font-size: 2.8rem;
     font-weight: bold;
-    color: #5a3e1b; /* warm ink color */
+    color: #64FFDA; /* Bright accent for the main title */
     margin-bottom: 0.3rem;
     animation: fadeInDown 1s ease forwards;
     opacity: 0;
@@ -41,118 +41,97 @@ header h1 {
 header p {
     font-size:1.2rem;
     margin-top:0.5rem;
-    color:#3b2f2f;
+    color:#E6E6FA;
     animation:fadeIn 1s 0.5s forwards;
     opacity:0;
 }
 
 nav {
-    background:#fffdf5; 
+    background:#0E223D; /* Darker navy for nav background */
     display:flex;
     justify-content:center;
     padding:0.7rem 0;
-    border-bottom: 3px dashed #f5c16c; 
-    /* remove inset shadow */
-    /* box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1); */
+    border-bottom: 3px solid #64FFDA;
 }
 
 nav a {
-    color:#3b2f2f;
+    color:#64FFDA; /* Accent color for nav links */
     text-decoration:none;
     margin:0 1rem;
     font-weight:bold;
     font-size:1rem;
     padding:0.5rem 1rem;
-    border-radius:6px 6px 0 0; /* rounded top like notebook tabs */
-    background:#fff9c4; /* sticky-tab style */
-    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    border-radius:6px; /* Modern, slightly rounded tabs */
+    background:#0E223D; /* Same as nav background */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4); /* Deeper shadow for contrast */
     transition: all 0.3s;
+    border: 1px solid #2B4262; /* Subtle border for definition */
 }
 
 nav a:hover {
     transform: translateY(-3px);
-    background:#f5e1b8; /* slightly darker sticky tab on hover */
-    color:#3b2f2f;
+    background:#1A2E4B; /* Lighter navy on hover */
+    color:#64FFDA;
+    border-color: #64FFDA; /* Accent border on hover */
 }
 
 main { max-width:900px; margin:2rem auto; padding:0 1rem; }
 
 section {
-    background:#fffdf5; /* off-white paper */
+    background:#0E223D; /* Dark navy for sections */
     padding:2rem 2rem;
     margin-bottom:2rem;
     border-radius:12px;
-    box-shadow:0 6px 12px rgba(0,0,0,0.1);
-    border-left: 4px solid #f5c16c; /* notebook page edge accent */
+    box-shadow:0 6px 15px rgba(0,0,0,0.3); /* Deeper, more spread shadow */
+    border-left: 4px solid #64FFDA; /* Bright accent line */
     position: relative;
     opacity:0;
     transform: translateY(30px);
     transition:all 0.8s ease;
 }
 
-section h2 { margin-bottom:1rem; color:#5a3e1b; border-bottom:1px solid #ecf0f1; padding-bottom:0.3rem; }
+section h2 { margin-bottom:1rem; color:#64FFDA; border-bottom:1px solid #2B4262; padding-bottom:0.3rem; }
 
 ul li {
+    padding:0.6rem 0;
     list-style: none;
+    border-bottom: 1px dashed #2B4262; /* Lighter dashed line */
     position: relative;
     padding-left: 1.8rem;
-    transition: transform 0.3s ease, color 0.3s ease; /* keep smooth */
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 ul li::before {
-    content: "⭐"; /* or your image */
+    content: "🔷"; /* Diamond for a sleeker look, or use a custom SVG */
     position: absolute;
     left: 0;
-    top: 0.2rem;
+    /* Anchor the bullet to the top line so it doesn't move when content expands */
+    top: 1.2rem;
+    /* Apply the final optical lift adjustment */
+    transform: translateY(-65%); /* ADJUSTED from -85% to -65% */
     width: 1rem;
     height: 1rem;
     display: inline-block;
-    transition: transform 0.3s ease; /* smooth movement */
+    transition: transform 0.3s ease;
+    color: #64FFDA; /* Accent color for the bullet */
 }
 
 ul li:hover {
-    transform: translateX(10px); /* moves both li and pseudo-element */
+    transform: translateX(10px);
+    color:#64FFDA; /* Accent color on hover */
 }
 
-
-/*
-ul li {
-    list-style: none;
-    position: relative;
-    padding-left: 1.8rem;
-}
-
-ul li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.2rem; 
-    width: 1rem;
-    height: 1rem;
-    background-image: url('star.png'); 
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-✅ Notes:
-
-If you want to use different icons for hobbies, diary, or about lists, you can assign different classes to each ul and customize their ::before.
-
-Make sure your custom image is small enough to look neat (e.g., 16x16 or 24x24 px).
-*/
-
-
-li:hover { transform: translateX(10px); color:#3498db; }
-li .entry-content { max-height:0; overflow:hidden; padding-left:1rem; color:#555; transition:max-height 0.5s ease, padding 0.5s ease; }
+li .entry-content { max-height:0; overflow:hidden; padding-left:1rem; color:#B0C4DE; transition:max-height 0.5s ease, padding 0.5s ease; }
 
 footer {
-    background:#fffdf5; /* notebook paper color */
-    color:#3b2f2f; /* dark brown text */
-    text-align:center;
-    padding:1.5rem 1rem;
-    margin-top:2rem;
-    font-size:0.9rem;
-    border-top: 3px dashed #f5c16c; /* stitched bottom line */
-    box-shadow: inset 0 1px 0 rgba(0,0,0,0.05); /* subtle top shadow */
+    background: #1A2E4B; /* Slightly lighter navy for footer */
+    color: #E6E6FA;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    border-top: 3px solid #64FFDA; /* Bright accent border */
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
 footer .social-icons {
@@ -163,78 +142,129 @@ footer .social-icons {
 }
 
 footer .social-icons a img {
-    width: 28px;   /* adjust size as needed */
+    width: 28px;
     height: 28px;
     transition: transform 0.3s;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(285deg) brightness(120%) contrast(100%); /* Make social icons white/light */
 }
 
 footer .social-icons a:hover img {
-    transform: translateY(-2px); /* subtle hover animation */
+    transform: translateY(-2px);
+    filter: invert(70%) sepia(80%) saturate(500%) hue-rotate(120deg) brightness(100%) contrast(100%); /* Accent color on hover */
 }
 
-
 .add-entry {
-    display:inline-block;
-    margin-top:1rem;
-    padding:0.5rem 1rem;
-    background:#f5e1b8;
-    color:#3b2f2f;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-    font-size:0.95rem;
-    font-weight:bold;
-    transition:background 0.3s, transform 0.3s;
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #64FFDA; /* Accent button */
+    color: #0E223D; /* Dark text on accent */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
 }
 
 .add-entry:hover {
-    background:#f3d78c;
+    background: #7FFFD4; /* Lighter accent on hover */
     transform: scale(1.05);
 }
 
 .tip {
-    background:#fff9c4;
-    padding:0.6rem 1rem;
-    border-left:4px solid #f5c16c;
-    border-radius:4px;
-    display:inline-block;
-    margin-bottom:1rem;
-    font-style:italic;
-    opacity:0;
+    background: #0A192F; /* Darker background for tip */
+    color: #64FFDA; /* Accent color for tip text */
+    padding: 0.6rem 1rem;
+    border-left: 4px solid #64FFDA; /* Accent border */
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-style: italic;
+    opacity: 0;
     transform: translateX(-20px);
     transition: all 1s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .entry-content {
-    background: rgba(245, 241, 228, 0.4);
-    padding-left:1rem;
-    margin-top:0.2rem;
-    border-left: 2px solid #f5c16c;
-    overflow:hidden;
-    transition:max-height 0.5s ease, padding 0.5s ease;
+    background: rgba(10, 25, 47, 0.4); /* Translucent dark navy */
+    padding-left: 1rem;
+    margin-top: 0.2rem;
+    border-left: 2px solid #64FFDA; /* Accent border */
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
 }
 
 /* Keyframes */
-@keyframes fadeIn { to {opacity:1;} }
-@keyframes fadeInDown { to {opacity:1; transform:translateY(0);} }
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
 
+@keyframes fadeInDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* REVISED .language-cta for compact design */
+.language-cta {
+    position: absolute;
+    top: 0.8rem;
+    right: 1.2rem;
+    padding: 0.3rem 0.6rem;
+    background: #0E223D;
+    border: 2px solid #64FFDA;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* FIX: Added subtle lift and enhanced glow hover effect */
+.language-cta:hover {
+    background: #1A2E4B;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(100, 255, 218, 0.5);
+}
+
+.language-cta p {
+    font-size: 0.8rem;
+    color: #E6E6FA;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+/* REVISED .lang-switcher - Reverted to default browser appearance */
 .lang-switcher {
-    position:absolute;
-    top:1.5rem;
-    right:1.2rem;
-    font-size:1rem;
-    padding:0.5rem 1.2rem;
-    border-radius:8px 8px 0 0; /* notebook tab shape */
-    border:1px solid #bdc3c7;
-    background:#fff9c4;
-    color:#3b2f2f;
-    cursor:pointer;
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    position: static;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    border: 1px solid #2B4262;
+    background: #0A192F;
+    color: #64FFDA; /* Text color remains the neon accent color */
+    cursor: pointer;
+    box-shadow: none;
     transition: all 0.3s;
 }
 
+/* FIX: Removed custom arrow styling */
 .lang-switcher:hover {
-    background:#f5e1b8;
+    background: #1A2E4B;
+    border-color: #64FFDA;
+}
+
+/* FIX: Override any list/li-like transforms that might be leaking into the header */
+.language-cta,
+.lang-switcher {
+    transition: transform 0.3s ease;
+    transform: none !important;
 }
 
 </style>
@@ -242,58 +272,62 @@ footer .social-icons a:hover img {
 <body>
 
 <header>
+	<br>
     <h1 id="title">CoolCat's Hobby & Daily Diary</h1>
     <p id="subtitle">Elegant musings on hobbies and daily life</p>
-    <select id="lang-switcher" class="lang-switcher">
-        <option value="en">English</option>
-        <option value="ja">日本語</option>
-        <option value="th">ไทย</option>
-    </select>
+    
+    <div class="language-cta">
+        <!-- Text for language selection is now dynamically set by JS -->
+        <p id="cta-text">Which language do you prefer to talk with CC?</p>
+        <select id="lang-switcher" class="lang-switcher">
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="th">ไทย</option>
+        </select>
+    </div>
 </header>
 
 <nav>
-    <a href="#hobbies" id="nav-hobbies">Hobbies</a>
-    <a href="#daily-diary" id="nav-diary">Daily Diary</a>
-    <a href="#about" id="nav-about">About Me</a>
+    <!-- UPDATED Navigation Links -->
+    <a href="https://www.google.com" id="nav-google">Google</a>
+    <a href="adventure.html" id="nav-diary">Adventure Archive</a>
+    <a href="library.html" id="nav-library">Omnious Library</a>
+    <a href="image_lab.html" id="nav-image">Image lab</a>
 </nav>
 
 <main>
-    <section id="hobbies" class="fade-section">
-        <h2 id="hobbies-title">My Hobbies</h2>
-        <p class="tip" id="hobby-tip">Loading tip...</p>
-        <ul id="hobby-list">
-            <li>Photography: capturing life’s subtle moments</li>
-            <li>Cooking: experimenting with flavors</li>
-            <li>Reading: exploring stories and knowledge</li>
-            <li>Gardening: nurturing plants and mindfulness</li>
-            <li>Sketching: drawing inspiration from everyday life</li>
-        </ul>
-        <button class="add-entry" id="add-hobby">Add a Hobby</button>
-    </section>
 
-    <section id="daily-diary" class="fade-section">
-        <h2 id="diary-title">Daily Diary</h2>
-        <ul id="diary-list">
-            <li onclick="toggleEntry(this)">
-                <span class="entry-date">2025-09-12: Enjoyed a quiet walk in the park. 🍂</span>
-                <div class="entry-content">Felt calm and inspired by nature. Noticed the new cherry blossoms starting to bloom.</div>
-            </li>
-            <li onclick="toggleEntry(this)">
-                <span class="entry-date">2025-09-13: Tried a new pasta recipe; it was delightful. 🍝</span>
-                <div class="entry-content">Used garlic and cherry tomatoes. Might try adding shrimp next time.</div>
-            </li>
-            <li onclick="toggleEntry(this)">
-                <span class="entry-date">2025-09-14: Read a few chapters from a novel. 📖</span>
-                <div class="entry-content">The story is intense, exploring themes of adventure and friendship.</div>
-            </li>
-        </ul>
-        <button class="add-entry" id="add-diary">Add a Diary Entry</button>
-    </section>
+<section id="hobbies" class="fade-section">
+    <h2 id="hobbies-title">My Hobbies</h2>
+    <p class="tip" id="hobby-tip">Loading tip...</p>
+    <ul id="hobby-list">
+        <!-- Hobbies will be injected here by JS -->
+    </ul>
+</section>
 
-    <section id="about" class="fade-section">
-        <h2 id="about-title">About Me</h2>
-        <p id="about-text">Hello! I'm CoolCat. This is my little digital space to reflect on hobbies, daily experiences, and moments that bring joy. I prefer a simple, classy, and calm approach to sharing my life.</p>
-    </section>
+<section id="daily-diary" class="fade-section">
+    <h2 id="diary-title">Adventure Archive</h2>
+    <ul id="diary-list">
+        <!-- Diary entries will be injected here by JS -->
+    </ul>
+</section>
+
+<!-- RENAMED section from 'about' to 'library' -->
+<section id="library" class="fade-section">
+    <h2 id="library-title">Omnious Library</h2>
+    <div id="library-content">
+        <!-- Content will be injected here by JS -->
+    </div>
+</section>
+
+<!-- ADDED new 'Image lab' section -->
+<section id="image-lab" class="fade-section">
+    <h2 id="image-lab-title">Image lab</h2>
+    <div id="image-lab-content">
+        <!-- Content will be injected here by JS -->
+    </div>
+</section>
+
 </main>
 
 <footer>
@@ -315,29 +349,39 @@ footer .social-icons a:hover img {
 </footer>
 
 <script>
+
 const translations = {
     en: {
         title: "CoolCat's Hobby & Daily Diary",
         subtitle: "Elegant musings on hobbies and daily life",
-        nav: { hobbies: "Hobbies", diary: "Daily Diary", about: "About Me" },
+        ctaText: "Which language do you prefer to talk with CC?",
+        nav: { 
+            google: "Google", 
+            diary: "Adventure Archive", 
+            library: "Omnious Library", 
+            image: "Image lab" 
+        },
         hobbiesTitle: "My Hobbies",
         hobbyList: [
-            "Photography: capturing life’s subtle moments",
-            "Cooking: experimenting with flavors",
-            "Reading: exploring stories and knowledge",
-            "Gardening: nurturing plants and mindfulness",
-            "Sketching: drawing inspiration from everyday life"
+            "1: Gaming (RPGs)",
+            "2: Digital Art",
+            "3: Reading Sci-Fi",
         ],
-        diaryTitle: "Daily Diary",
+        diaryTitle: "Adventure Archive",
         diaryList: [
-            { date:"2025-09-12: Enjoyed a quiet walk in the park. 🍂", content:"Felt calm and inspired by nature. Noticed the new cherry blossoms starting to bloom." },
-            { date:"2025-09-13: Tried a new pasta recipe; it was delightful. 🍝", content:"Used garlic and cherry tomatoes. Might try adding shrimp next time." },
-            { date:"2025-09-14: Read a few chapters from a novel. 📖", content:"The story is intense, exploring themes of adventure and friendship." }
+            { date:"Pokemon rejuvenation v13.5 [Dual:Flying/Water run]", content:" 🐟 🕊 ️Fins, Wings or sashay away &#x1F485;" },
+            { date:"2025-05-18", content:"Finished a small watercolor landscape today. Really happy with the neon glow effect on the moon." },
+            { date:"2025-05-17", content:"Tried a new recipe: Spicy Kimchi Udon. Perfect balance of heat and savory." },
         ],
-        addHobby: "Add a Hobby",
-        addDiary: "Add a Diary Entry",
-        aboutTitle: "About Me",
-        aboutText: "Hello! I'm CoolCat. This is my little digital space to reflect on hobbies, daily experiences, and moments that bring joy. I prefer a simple, classy, and calm approach to sharing my life.",
+        
+        // RENAMED from 'about'
+        libraryTitle: "Omnious Library", 
+        libraryText: "Hello! I'm CoolCat. This is my little digital space to reflect on hobbies, daily experiences, and moments that bring joy. I prefer a simple, classy, and calm approach to sharing my life.", 
+        
+        // NEW section content
+        imageLabTitle: "Image lab", 
+        imageLabText: "Welcome to the Image Lab! This section is reserved for showcasing digital art projects and experiments with generative AI. Check back soon for my latest gallery of cool visuals.",
+        
         tips: [
             "Try a new skill this week – small progress counts!",
             "Photography tip: explore shadows for dramatic shots.",
@@ -345,30 +389,43 @@ const translations = {
             "Gardening tip: morning sunlight helps most plants thrive.",
             "Reading tip: dedicate 20 minutes before bed for calm reading."
         ],
+        
         footer: "© 2025 CoolCat's Hobby & Daily Diary. All rights reserved."
     },
+    
+//----------------------------------------------------------------------------------------------------//	
+    
     ja: {
         title: "クールキャットの趣味と日記",
         subtitle: "趣味と日常生活のエレガントな記録",
-        nav: { hobbies: "趣味", diary: "日記", about: "自己紹介" },
+        ctaText: "CCとどの言語で話したいですか？",
+        nav: { 
+            google: "Google", 
+            diary: "冒険アーカイブ", 
+            library: "不吉な図書館", 
+            image: "画像ラボ" 
+        },
         hobbiesTitle: "私の趣味",
         hobbyList: [
-            "写真撮影：人生のさりげない瞬間を捉える",
-            "料理：味の探求と実験",
-            "読書：物語と知識の探検",
-            "ガーデニング：植物を育て心を癒す",
-            "スケッチ：日常からインスピレーションを描く"
+            "1: ゲーム (RPG)",
+            "2: デジタルアート",
+            "3: SFを読む",
         ],
-        diaryTitle: "日記",
+        diaryTitle: "冒険アーカイブ",
         diaryList: [
-            { date:"2025-09-12: 公園を静かに散歩しました。🍂", content:"自然に癒され、桜の花が咲き始めているのに気づきました。" },
-            { date:"2025-09-13: 新しいパスタ料理を作りました。とても美味しかった！🍝", content:"ニンニクとミニトマトを使いました。次はエビを加えてみたいです。" },
-            { date:"2025-09-14: 小説を数章読みました。📖", content:"物語は冒険と友情をテーマにしていて、とても引き込まれます。" }
+            { date:"ポケモンリジュベネーション v13.5 [デュアル：飛行/水縛り]", content:"🐟 🕊 ️ヒレか羽か、それともさっさと去る？ 💅" },
+            { date:"2025-05-18", content:"今日、小さな水彩風景画を完成させました。月のネオンのような輝きにとても満足しています。" },
+            { date:"2025-05-17", content:"新しいレシピに挑戦：スパイシーキムチうどん。辛さと風味のバランスが完璧でした。" },
         ],
-        addHobby: "趣味を追加",
-        addDiary: "日記を追加",
-        aboutTitle: "自己紹介",
-        aboutText: "こんにちは！クールキャットです。ここは趣味や日常の体験、喜びを分かち合うための小さなデジタル空間です。シンプルで落ち着いた雰囲気を大切にしています。",
+        
+        // RENAMED from 'about'
+        libraryTitle: "不吉な図書館", 
+        libraryText: "こんにちは！クールキャットです。ここは趣味や日常の体験、喜びを分かち合うための小さなデジタル空間です。シンプルで落ち着いた雰囲気を大切にしています。", 
+        
+        // NEW section content
+        imageLabTitle: "画像ラボ", 
+        imageLabText: "画像ラボへようこそ！このセクションは、デジタルアートプロジェクトや生成AIによる実験を紹介するために用意されています。近日公開予定のクールなビジュアルギャラリーをお楽しみに！", 
+        
         tips: [
             "今週は新しいスキルに挑戦してみましょう！",
             "写真のコツ：影を利用してドラマチックに。",
@@ -376,30 +433,43 @@ const translations = {
             "ガーデニングのコツ：朝の日光が多くの植物に最適。",
             "読書のコツ：寝る前に20分読書すると落ち着きます。"
         ],
+        
         footer: "© 2025 クールキャットの趣味と日記. 無断転載を禁ず。"
     },
+    
+//----------------------------------------------------------------------------------------------------//		
+    
     th: {
         title: "ไดอารี่และงานอดิเรกของคูลแคท",
         subtitle: "บันทึกเรื่องราวเกี่ยวกับงานอดิเรกและชีวิตประจำวัน",
-        nav: { hobbies: "งานอดิเรก", diary: "ไดอารี่", about: "เกี่ยวกับฉัน" },
+        ctaText: "พูดภาษาไทยกันดีกว่า",
+        nav: { 
+            google: "Google", 
+            diary: "บันทึกการผจญภัย", 
+            library: "หอสมุดลึกลับ", 
+            image: "ห้องแล็บรูปภาพ" 
+        },
         hobbiesTitle: "งานอดิเรกของฉัน",
         hobbyList: [
-            "การถ่ายภาพ: เก็บช่วงเวลาที่แสนพิเศษ",
-            "การทำอาหาร: ทดลองรสชาติใหม่ๆ",
-            "การอ่านหนังสือ: สำรวจเรื่องราวและความรู้",
-            "การทำสวน: ดูแลต้นไม้และจิตใจ",
-            "การวาดรูป: หยิบแรงบันดาลใจจากชีวิตประจำวัน"
+            "1: เล่นเกม (RPG)",
+            "2: งานศิลปะดิจิทัล",
+            "3: อ่านนิยายวิทยาศาสตร์",
         ],
-        diaryTitle: "ไดอารี่",
+        diaryTitle: "บันทึกการผจญภัย",
         diaryList: [
-            { date:"2025-09-12: เดินเล่นในสวนอย่างเงียบสงบ 🍂", content:"รู้สึกสงบและได้รับแรงบันดาลใจจากธรรมชาติ เห็นดอกซากุระเริ่มบาน" },
-            { date:"2025-09-13: ทดลองทำพาสต้าสูตรใหม่ 🍝", content:"ใช้กระเทียมและมะเขือเทศเชอร์รี่ ครั้งหน้าจะลองใส่กุ้งดู" },
-            { date:"2025-09-14: อ่านนิยายไปหลายบท 📖", content:"เรื่องราวเข้มข้น เต็มไปด้วยการผจญภัยและมิตรภาพ" }
+            { date:"โปเกมอน รีจูเวเนชัน เวอร์ชัน 13.5 [ไทป์คู่: บิน/น้ำ]", content:"🐟 🕊 ️ครีบ ปีก หรือกลับไปเลย 💅" },
+            { date:"2025-05-18", content:"วันนี้วาดภาพสีน้ำเล็กๆ เสร็จแล้ว ชอบเอฟเฟกต์นีออนบนดวงจันทร์มาก" },
+            { date:"2025-05-17", content:"ลองทำสูตรใหม่: อุด้งกิมจิรสเผ็ด ร้อนและอร่อยลงตัวสุดๆ" },
         ],
-        addHobby: "เพิ่มงานอดิเรก",
-        addDiary: "เพิ่มบันทึกไดอารี่",
-        aboutTitle: "เกี่ยวกับฉัน",
-        aboutText: "สวัสดีครับ! ฉันคือคูลแคท ที่นี่คือพื้นที่เล็กๆ ของฉันเพื่อบันทึกเรื่องราว งานอดิเรก และสิ่งที่ทำให้มีความสุข ฉันชอบบรรยากาศที่เรียบง่ายและสงบ",
+    
+        // RENAMED from 'about'
+        libraryTitle: "หอสมุดลึกลับ", 
+        libraryText: "สวัสดีครับ! ฉันคือคูลแคท ที่นี่คือพื้นที่เล็กๆ ของฉันเพื่อบันทึกเรื่องราว งานอดิเรก และสิ่งที่ทำให้มีความสุข ฉันชอบบรรยากาศที่เรียบง่ายและสงบ", 
+        
+        // NEW section content
+        imageLabTitle: "ห้องแล็บรูปภาพ", 
+        imageLabText: "ยินดีต้อนรับสู่ห้องแล็บรูปภาพ! ส่วนนี้สงวนไว้สำหรับการแสดงโครงการศิลปะดิจิทัลและการทดลองกับ AI สร้างสรรค์ โปรดกลับมาตรวจสอบแกลเลอรีภาพเจ๋งๆ ล่าสุดของฉันเร็วๆ นี้",
+        
         tips: [
             "ลองทำสิ่งใหม่ๆ ในสัปดาห์นี้ ความก้าวหน้าเล็กๆ ก็สำคัญ!",
             "เคล็ดลับถ่ายภาพ: เล่นกับเงาเพื่อภาพที่น่าทึ่ง",
@@ -407,58 +477,86 @@ const translations = {
             "เคล็ดลับทำสวน: แสงแดดยามเช้าช่วยให้พืชเจริญเติบโตดีที่สุด",
             "เคล็ดลับการอ่าน: อ่านก่อนนอน 20 นาทีช่วยให้จิตใจสงบ"
         ],
+        
         footer: "© 2025 ไดอารี่และงานอดิเรกของคูลแคท สงวนลิขสิทธิ์"
     }
 };
 
-// update content
-function applyLanguage(lang) {
-    var t = translations[lang];
+//----------------------------------------------------------------------------------------------------//
 
+function applyLanguage(lang) {
+
+    var t = translations[lang];	
+    
+    // Update Header and Footer text
     document.getElementById("title").textContent = t.title;
     document.getElementById("subtitle").textContent = t.subtitle;
-
-    document.getElementById("nav-hobbies").textContent = t.nav.hobbies;
-    document.getElementById("nav-diary").textContent = t.nav.diary;
-    document.getElementById("nav-about").textContent = t.nav.about;
-
-    document.getElementById("hobbies-title").textContent = t.hobbiesTitle;
-
-    // ES5-compatible hobby list
-    var hobbyHTML = [];
-    for (var i = 0; i < t.hobbyList.length; i++) {
-        hobbyHTML.push('<li>' + t.hobbyList[i] + '</li>');
-    }
-    document.getElementById("hobby-list").innerHTML = hobbyHTML.join('');
-
-    document.getElementById("add-hobby").textContent = t.addHobby;
-
-    document.getElementById("diary-title").textContent = t.diaryTitle;
-
-    // ES5-compatible diary list
-    var diaryHTML = [];
-    for (var j = 0; j < t.diaryList.length; j++) {
-        diaryHTML.push(
-            '<li onclick="toggleEntry(this)">' +
-                '<span class="entry-date">' + t.diaryList[j].date + '</span>' +
-                '<div class="entry-content">' + t.diaryList[j].content + '</div>' +
-            '</li>'
-        );
-    }
-    document.getElementById("diary-list").innerHTML = diaryHTML.join('');
-
-    document.getElementById("add-diary").textContent = t.addDiary;
-
-    document.getElementById("about-title").textContent = t.aboutTitle;
-    document.getElementById("about-text").textContent = t.aboutText;
-
-    // random tip
-    var tipEl = document.getElementById("hobby-tip");
-    tipEl.textContent = t.tips[Math.floor(Math.random() * t.tips.length)];
-    tipEl.style.opacity = 1;
-    tipEl.style.transform = 'translateX(0)';
-
     document.getElementById("footer-text").textContent = t.footer;
+    
+    // NEW: Update language selection prompt text
+    document.getElementById("cta-text").textContent = t.ctaText;
+    
+    // Update Navigation links (Now four links)
+    document.getElementById("nav-google").textContent = t.nav.google; 
+    document.getElementById("nav-diary").textContent = t.nav.diary;
+    document.getElementById("nav-library").textContent = t.nav.library; 
+    document.getElementById("nav-image").textContent = t.nav.image; 
+    
+    // Update Section Titles
+    document.getElementById("hobbies-title").textContent = t.hobbiesTitle;
+    document.getElementById("diary-title").textContent = t.diaryTitle;
+    document.getElementById("library-title").textContent = t.libraryTitle; 
+    document.getElementById("image-lab-title").textContent = t.imageLabTitle;
+    
+    
+    // Populate Hobbies
+	var hobbyListEl = document.getElementById("hobby-list");
+	hobbyListEl.innerHTML = ''; // clear previous hobbies
+	
+	t.hobbyList.forEach(function(hobby) {
+		var li = document.createElement('li');
+		li.textContent = hobby;
+		hobbyListEl.appendChild(li);
+	});
+	
+	// Random tip
+	var tipEl = document.getElementById("hobby-tip");
+	if (t.tips && t.tips.length > 0) {
+		tipEl.textContent = t.tips[Math.floor(Math.random() * t.tips.length)];
+		tipEl.style.opacity = 1;
+		tipEl.style.transform = 'translateX(0)';
+	} else {
+		tipEl.style.display = 'none'; // hide if no tips
+	}
+
+    // Populate Diary
+    var diaryListEl = document.getElementById("diary-list");
+    diaryListEl.innerHTML = ''; // clear previous entries
+
+    t.diaryList.forEach(function(entry) {
+        var li = document.createElement('li');
+        li.onclick = function() { toggleEntry(this); };
+
+        var dateSpan = document.createElement('span');
+        dateSpan.className = 'entry-date';
+        dateSpan.textContent = entry.date;
+
+        var contentDiv = document.createElement('div');
+        contentDiv.className = 'entry-content';
+        contentDiv.innerHTML = entry.content; // use innerHTML for emojis
+
+        li.appendChild(dateSpan);
+        li.appendChild(contentDiv);
+        diaryListEl.appendChild(li);
+    });
+
+    // Populate Library section (renamed from About)
+    var libraryEl = document.getElementById("library-content");
+    libraryEl.innerHTML = '<p>' + t.libraryText + '</p>'; 
+
+    // Populate Image Lab section (NEW)
+    var imageLabEl = document.getElementById("image-lab-content");
+    imageLabEl.innerHTML = '<p>' + t.imageLabText + '</p>'; 
 }
 
 // init
@@ -470,13 +568,14 @@ applyLanguage("en"); // default English
 // diary collapse
 function toggleEntry(el) {
     const content = el.querySelector('.entry-content');
-    if (content.style.maxHeight) {
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
         // Collapse
         content.style.maxHeight = null;
         content.style.padding = "0 0 0 1rem";
     } else {
         // Expand with extra buffer
         const extraSpace = 20; // 20px buffer
+        // Note: scrollHeight gets the full height of content
         content.style.maxHeight = (content.scrollHeight + extraSpace) + "px";
         content.style.padding = "0.8rem 0 0.8rem 1rem"; // slightly more padding
     }
@@ -504,8 +603,6 @@ window.addEventListener('load', fadeInOnScroll);
 
 </body>
 </html>
-
-
 
 
 
