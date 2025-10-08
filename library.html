@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoolCat's Omnious Library</title>
+<style>
+
+body, h1, h2, h3, h4, h5, h6, p, li, a, button {
+    font-family: 'Kanit', sans-serif; /* A clean, modern sans-serif */
+}
+
+* { margin:0; padding:0; box-sizing:border-box;}
+
+body {
+    background: #0A192F; /* Deep navy background */
+    color: #E6E6FA; /* Light lavender for contrast */
+    line-height:1.7;
+    overflow-x:hidden;
+}
+
+header {
+    background: #1A2E4B; /* Slightly lighter navy for header */
+    color: #E6E6FA;
+    padding:3rem 1rem 2rem 1rem;
+    text-align:center;
+    border-bottom: 3px solid #64FFDA; /* Bright accent border */
+    position: relative;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #64FFDA; /* Bright accent for the main title */
+    margin-bottom: 0.3rem;
+    animation: fadeInDown 1s ease forwards;
+    opacity: 0;
+}
+
+header p {
+    font-size:1.2rem;
+    margin-top:0.5rem;
+    color:#E6E6FA;
+    animation:fadeIn 1s 0.5s forwards;
+    opacity:0;
+}
+
+nav {
+    background:#0E223D; /* Darker navy for nav background */
+    display:flex;
+    justify-content:center;
+    padding:0.7rem 0;
+    border-bottom: 3px solid #64FFDA;
+}
+
+nav a {
+    color:#64FFDA; /* Accent color for nav links */
+    text-decoration:none;
+    margin:0 1rem;
+    font-weight:bold;
+    font-size:1rem;
+    padding:0.5rem 1rem;
+    border-radius:6px; /* Modern, slightly rounded tabs */
+    background:#0E223D; /* Same as nav background */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4); /* Deeper shadow for contrast */
+    transition: all 0.3s;
+    border: 1px solid #2B4262; /* Subtle border for definition */
+}
+
+nav a:hover {
+    transform: translateY(-3px);
+    background:#1A2E4B; /* Lighter navy on hover */
+    color:#64FFDA;
+    border-color: #64FFDA; /* Accent border on hover */
+}
+
+main { max-width:900px; margin:2rem auto; padding:0 1rem; }
+
+section {
+    background:#0E223D; /* Dark navy for sections */
+    padding:2rem 2rem;
+    margin-bottom:2rem;
+    border-radius:12px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.3); /* Deeper, more spread shadow */
+    border-left: 4px solid #64FFDA; /* Bright accent line */
+    position: relative;
+    opacity:0;
+    transform: translateY(30px);
+    transition:all 0.8s ease;
+}
+
+section h2 { margin-bottom:1rem; color:#64FFDA; border-bottom:1px solid #2B4262; padding-bottom:0.3rem; }
+
+ul li {
+    padding:0.6rem 0;
+    list-style: none;
+    border-bottom: 1px dashed #2B4262; /* Lighter dashed line */
+    position: relative;
+    padding-left: 1.8rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+ul li::before {
+    content: "🔷"; /* Diamond for a sleeker look, or use a custom SVG */
+    position: absolute;
+    left: 0;
+    top: 1.2rem;
+    transform: translateY(-65%);
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    color: #64FFDA; /* Accent color for the bullet */
+}
+
+ul li:hover {
+    transform: translateX(10px);
+    color:#64FFDA; /* Accent color on hover */
+}
+
+footer {
+    background: #1A2E4B; /* Slightly lighter navy for footer */
+    color: #E6E6FA;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    border-top: 3px solid #64FFDA; /* Bright accent border */
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+footer .social-icons a img {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.3s;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(285deg) brightness(120%) contrast(100%); /* Make social icons white/light */
+}
+
+footer .social-icons a:hover img {
+    transform: translateY(-2px);
+    filter: invert(70%) sepia(80%) saturate(500%) hue-rotate(120deg) brightness(100%) contrast(100%); /* Accent color on hover */
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.language-cta {
+    position: absolute;
+    top: 0.8rem;
+    right: 1.2rem;
+    padding: 0.3rem 0.6rem;
+    background: #0E223D;
+    border: 2px solid #64FFDA;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+    transition: all 0.3s ease;
+}
+
+.language-cta:hover {
+    background: #1A2E4B;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(100, 255, 218, 0.5);
+}
+
+.language-cta p {
+    font-size: 0.8rem;
+    color: #E6E6FA;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.lang-switcher {
+    position: static;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    border: 1px solid #2B4262;
+    background: #0A192F;
+    color: #64FFDA; /* Text color remains the neon accent color */
+    cursor: pointer;
+    box-shadow: none;
+    transition: all 0.3s;
+}
+
+.lang-switcher:hover {
+    background: #1A2E4B;
+    border-color: #64FFDA;
+}
+
+.language-cta,
+.lang-switcher {
+    transition: transform 0.3s ease;
+    transform: none !important;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <h1 id="title">CoolCat's Hobby & Daily Diary</h1>
+    <p id="subtitle">Elegant musings on hobbies and daily life</p>
+    
+    <div class="language-cta">
+        <p id="cta-text">Which language do you prefer to talk with CC?</p>
+        <select id="lang-switcher" class="lang-switcher">
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="th">ไทย</option>
+        </select>
+    </div>
+</header>
+
+<nav>
+    <a href="https://www.google.com" id="nav-google">Google</a>
+    <a href="adventure.html" id="nav-diary">Adventure Archive</a>
+    <a href="#" id="nav-library">Omnious Library</a> <!-- Current Page -->
+    <a href="image_lab.html" id="nav-image">Image lab</a>
+</nav>
+
+<main>
+
+<section id="library" class="fade-section">
+    <h2 id="library-title">Omnious Library</h2>
+    <div id="library-content">
+        <p id="library-placeholder">This is the Omnious Library. The content for this section will be added soon!</p>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://instagram.com/yourhandle" target="_blank" aria-label="Instagram">
+            <img src="ccigicon.jpg" alt="Instagram">
+        </a>
+        <a href="https://youtube.com/yourhandle" target="_blank" aria-label="YouTube">
+            <img src="ccyticon.jpg" alt="YouTube">
+        </a>
+        <a href="https://twitter.com/yourhandle" target="_blank" aria-label="X / Twitter">
+            <img src="ccxicon.jpg" alt="Twitter">
+        </a>
+        <a href="mailto:your@email.com" aria-label="Email">
+            <img src="ccmailicon.jpg" alt="Email">
+        </a>
+    </div>
+    <p id="footer-text">&copy; 2025 CoolCat's Hobby & Daily Diary. All rights reserved.</p>
+</footer>
+
+<script>
+
+const translations = {
+    en: {
+        title: "CoolCat's Hobby & Daily Diary",
+        subtitle: "Elegant musings on hobbies and daily life",
+        ctaText: "Which language do you prefer to talk with CC?",
+        nav: { 
+            google: "Google", 
+            diary: "Adventure Archive", 
+            library: "Omnious Library", 
+            image: "Image lab" 
+        },
+        libraryTitle: "Omnious Library", 
+        libraryPlaceholder: "This is the Omnious Library. The content for this section will be added soon!",
+        footer: "© 2025 CoolCat's Hobby & Daily Diary. All rights reserved."
+    },
+    
+//----------------------------------------------------------------------------------------------------//	
+    
+    ja: {
+        title: "クールキャットの趣味と日記",
+        subtitle: "趣味と日常生活のエレガントな記録",
+        ctaText: "CCとどの言語で話したいですか？",
+        nav: { 
+            google: "Google", 
+            diary: "冒険アーカイブ", 
+            library: "不吉な図書館", 
+            image: "画像ラボ" 
+        },
+        libraryTitle: "不吉な図書館", 
+        libraryPlaceholder: "ここは不吉な図書館です。このセクションのコンテンツは近日中に追加されます！",
+        footer: "© 2025 クールキャットの趣味と日記. 無断転載を禁ず。"
+    },
+    
+//----------------------------------------------------------------------------------------------------//		
+    
+    th: {
+        title: "ไดอารี่และงานอดิเรกของคูลแคท",
+        subtitle: "บันทึกเรื่องราวเกี่ยวกับงานอดิเรกและชีวิตประจำวัน",
+        ctaText: "พูดภาษาไทยกันดีกว่า",
+        nav: { 
+            google: "Google", 
+            diary: "บันทึกการผจญภัย", 
+            library: "หอสมุดลึกลับ", 
+            image: "ห้องแล็บรูปภาพ" 
+        },
+        libraryTitle: "หอสมุดลึกลับ", 
+        libraryPlaceholder: "นี่คือหอสมุดลึกลับ เนื้อหาสำหรับส่วนนี้จะถูกเพิ่มในไม่ช้า!",
+        footer: "© 2025 ไดอารี่และงานอดิเรกของคูลแคท สงวนลิขสิทธิ์"
+    }
+};
+
+//----------------------------------------------------------------------------------------------------//
+
+function applyLanguage(lang) {
+    var t = translations[lang];	
+    
+    // Update Header and Footer text
+    document.getElementById("title").textContent = t.title;
+    document.getElementById("subtitle").textContent = t.subtitle;
+    document.getElementById("footer-text").textContent = t.footer;
+    document.getElementById("cta-text").textContent = t.ctaText;
+    
+    // Update Navigation links
+    document.getElementById("nav-google").textContent = t.nav.google; 
+    document.getElementById("nav-diary").textContent = t.nav.diary;
+    document.getElementById("nav-library").textContent = t.nav.library; 
+    document.getElementById("nav-image").textContent = t.nav.image; 
+    
+    // Update Section Title and Placeholder
+    document.getElementById("library-title").textContent = t.libraryTitle; 
+    document.getElementById("library-placeholder").textContent = t.libraryPlaceholder;
+
+    // Reset lang switcher selection
+    document.getElementById("lang-switcher").value = lang;
+}
+
+// init
+document.getElementById("lang-switcher").addEventListener("change", function(e) {
+    applyLanguage(e.target.value);
+});
+applyLanguage("en"); // default English
+
+
+// fade sections (Only for the single section on this page)
+var fadeSections = document.querySelectorAll('.fade-section');
+
+function fadeInOnScroll() {
+    for (var i = 0; i < fadeSections.length; i++) {
+        var section = fadeSections[i];
+        var rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            section.style.opacity = 1;
+            section.style.transform = 'translateY(0)';
+        }
+    }
+}
+
+window.addEventListener('scroll', fadeInOnScroll);
+window.addEventListener('load', fadeInOnScroll);
+
+</script>
+
+</body>
+</html>
