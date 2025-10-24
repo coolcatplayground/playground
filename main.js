@@ -137,7 +137,7 @@ langSwitcher.addEventListener("change", (e) => {
   document.getElementById("cta-text").textContent = t.cta;
 
   // Navigation
-  const navLabels = document.querySelectorAll("nav a[data-page]");
+  const navLabels = document.querySelectorAll("#main-nav a");
   navLabels.forEach((link, i) => {
     link.textContent = t.nav[i];
   });
