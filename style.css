@@ -1,0 +1,384 @@
+/* ===============================
+   🌈 CoolCat’s Hobby & Daily Diary
+   Global Stylesheet
+   =============================== */
+
+/* --- Animation Keyframes --- */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- BASE STYLES --- */
+body, h1, h2, h3, h4, h5, h6, p, li, a, button {
+  font-family: 'Kanit', sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #0A192F;
+  color: #E6E6FA;
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background 0.3s;
+}
+
+/* --- HEADER --- */
+header {
+  background: #1A2E4B;
+  color: #E6E6FA;
+  padding: 3rem 1rem 2rem 1rem;
+  text-align: center;
+  border-bottom: 3px solid #64FFDA;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+header h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #64FFDA;
+  margin-bottom: 0.3rem;
+  animation: fadeInDown 1s ease forwards;
+  opacity: 0;
+}
+header p {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: #E6E6FA;
+  animation: fadeIn 1s 0.5s forwards;
+  opacity: 0;
+}
+
+/* --- LANGUAGE SELECTOR --- */
+.language-cta {
+  position: absolute;
+  top: 0.8rem;
+  right: 1.2rem;
+  padding: 0.3rem 0.6rem;
+  background: #0E223D;
+  border: 2px solid #64FFDA;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+  transition: all 0.3s ease;
+}
+.language-cta:hover {
+  background: #1A2E4B;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(100, 255, 218, 0.5);
+}
+.language-cta p {
+  font-size: 0.8rem;
+  color: #E6E6FA;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+.lang-switcher {
+  position: static;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  border: 1px solid #2B4262;
+  background: #0A192F;
+  color: #64FFDA;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.lang-switcher:hover {
+  background: #1A2E4B;
+  border-color: #64FFDA;
+}
+
+/* --- NAVIGATION BAR --- */
+nav {
+  background: #0E223D;
+  display: flex;
+  justify-content: center;
+  padding: 0.7rem 0;
+  border-bottom: 3px solid #64FFDA;
+  flex-wrap: wrap;
+}
+nav a {
+  color: #64FFDA;
+  text-decoration: none;
+  margin: 0.5rem 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: #0E223D;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  transition: all 0.3s;
+  border: 1px solid #2B4262;
+  white-space: nowrap;
+}
+nav a.active {
+  background: #1A2E4B;
+  color: #64FFDA;
+  border-color: #64FFDA;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.4);
+}
+nav a:hover {
+  transform: translateY(-3px);
+  background: #1A2E4B;
+  border-color: #64FFDA;
+}
+
+/* --- MAIN CONTENT AREA --- */
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  min-height: 60vh;
+  transition: opacity 0.3s ease;
+}
+section {
+  background: #0E223D;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  border-left: 4px solid #64FFDA;
+  position: relative;
+  transition: all 0.8s ease;
+}
+section h2 {
+  margin-bottom: 1rem;
+  color: #64FFDA;
+  border-bottom: 1px solid #2B4262;
+  padding-bottom: 0.3rem;
+}
+section h3 {
+  color: #E6E6FA;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* --- PICKUP CONTENT --- */
+.cc-pickup {
+  background: #1A2E4B;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px solid #64FFDA;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  margin-bottom: 2rem;
+}
+.cc-pickup h3 {
+  color: #64FFDA;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+.pickup-date {
+  font-size: 0.9rem;
+  color: #B3C1D9;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed #2B4262;
+  padding-bottom: 0.5rem;
+}
+.pickup-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+.pickup-content p {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+/* --- COLLAPSIBLE ARCHIVE --- */
+.other-content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.other-content-item {
+  background: #1A2E4B;
+  border-radius: 6px;
+  border-left: 3px solid #2B4262;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+.archive-card-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+.archive-card-header:hover {
+  background-color: #2B4262;
+}
+.toggle-icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease-in-out;
+  line-height: 1;
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+.content-wrapper {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+              opacity 0.4s ease-out;
+  padding: 0 1rem;
+}
+.content-wrapper.expanded {
+  opacity: 1;
+}
+.item-content-padded {
+  padding-bottom: 1rem;
+}
+
+/* --- LAB NOTE / OMNIOUS LIBRARY --- */
+.lab-note-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.lab-note {
+  background: #1A2E4B;
+  border: 2px solid #64FFDA;
+  border-radius: 8px;
+  padding: 1.5rem;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  position: relative;
+}
+.lab-note::before {
+  content: attr(data-id);
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background: #0A192F;
+  color: #64FFDA;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid #64FFDA;
+}
+.lab-note h3 {
+  color: #E6E6FA;
+  font-family: 'Kanit', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px dashed #2B4262;
+  padding-bottom: 0.3rem;
+}
+.lab-note p {
+  font-size: 0.95rem;
+  color: #B3C1D9;
+  margin-bottom: 0.8rem;
+}
+.lab-note strong {
+  color: #64FFDA;
+  font-weight: bold;
+}
+.lab-note-image {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #64FFDA;
+  border-radius: 4px;
+  margin: 1rem 0;
+  display: block;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+.lab-note-metadata {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #B3C1D9;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed #2B4262;
+}
+
+/* --- IMAGE LAB --- */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.image-card {
+  background: #1A2E4B;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+  border: 1px solid #2B4262;
+}
+.image-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(100, 255, 218, 0.2);
+}
+.gallery-title {
+  color: #64FFDA;
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+  word-break: break-word;
+}
+.gallery-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+}
+.gallery-description {
+  font-size: 0.95rem;
+  color: #B3C1D9;
+}
+
+/* --- FOOTER --- */
+footer {
+  background: #1A2E4B;
+  color: #E6E6FA;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  border-top: 3px solid #64FFDA;
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.5);
+}
+footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+footer .social-icons a img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(285deg)
+          brightness(120%) contrast(100%);
+}
+footer .social-icons a:hover img {
+  transform: translateY(-2px);
+  filter: invert(70%) sepia(80%) saturate(500%) hue-rotate(120deg)
+          brightness(100%) contrast(100%);
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 600px) {
+  header h1 { font-size: 2rem; }
+  nav a { font-size: 0.9rem; padding: 0.4rem 0.8rem; }
+  section { padding: 1.5rem; }
+}
