@@ -308,6 +308,27 @@ section h3 {
   border-top: 1px dashed #2B4262;
 }
 
+.lab-note-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.lab-note-table th,
+.lab-note-table td {
+  border: 1px solid #2B4262;
+  padding: 0.5rem 0.8rem;
+  text-align: left;
+  color: #B3C1D9;
+}
+
+.lab-note-table th {
+  background: #1A2E4B;
+  color: #64FFDA;
+  font-weight: bold;
+}
+
 /* --- IMAGE LAB --- */
 .image-gallery {
   display: grid;
