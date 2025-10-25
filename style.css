@@ -329,6 +329,47 @@ section h3 {
   font-weight: bold;
 }
 
+/* ======================================
+   📱 Responsive Table Handling
+====================================== */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;        /* enables horizontal scroll on small screens */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.lab-note-table {
+  width: 100%;
+  min-width: 480px;        /* keeps structure readable */
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.lab-note-table th,
+.lab-note-table td {
+  border: 1px solid #2B4262;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  color: #B3C1D9;
+}
+
+.lab-note-table th {
+  background: #1A2E4B;
+  color: #64FFDA;
+  font-weight: bold;
+}
+
+/* subtle visual cue that table can scroll */
+.table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #2B4262;
+  border-radius: 10px;
+}
+
 /* --- IMAGE LAB --- */
 .image-gallery {
   display: grid;
