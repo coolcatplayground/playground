@@ -402,3 +402,45 @@ footer .social-icons a:hover img {
   to { opacity: 1; filter: blur(0px); }
 }
 
+/* ======================================
+   📱 Responsive Fix for Language Switcher
+====================================== */
+@media (max-width: 700px) {
+  .language-cta {
+    position: static;              /* remove absolute positioning */
+    margin-top: 1rem;
+    justify-content: center;       /* center horizontally */
+  }
+
+  header {
+    padding-top: 2rem;             /* reduce top padding slightly */
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 1.9rem;             /* make title fit smaller screens */
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .language-cta {
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .language-cta p {
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  .lang-switcher {
+    width: 100%;
+  }
+}
+
+
