@@ -443,28 +443,60 @@ footer .social-icons a:hover img {
   }
 }
 
-
 /* ======================================
-  📱 Responsive Fix for Image Gallery
+   📱 Responsive Fix for Image Lab Grid
 ====================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.gallery-card {
+  background: #1A2E4B;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  border: 1px solid #2B4262;
+  transition: transform 0.3s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(100, 255, 218, 0.2);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.gallery-caption {
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  color: #B3C1D9;
+  line-height: 1.5;
+}
+
+/* --- MOBILE FIX --- */
 @media (max-width: 700px) {
-  .image-gallery {
-    grid-template-columns: 1fr;     /* single column layout */
-    gap: 1.5rem;
-    padding: 0;                     /* remove any left/right offset */
+  .gallery-grid {
+    grid-template-columns: 1fr;   /* single column layout */
+    gap: 1.2rem;
+    padding: 0;
   }
 
-  .image-card {
-    width: 100%;                    /* ensure it fills available space */
-    margin: 0 auto;                 /* center it nicely */
+  .gallery-card {
+    width: 100%;
+    margin: 0 auto;
     box-sizing: border-box;
   }
 
-  .gallery-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
+  .gallery-caption {
+    font-size: 0.9rem;
   }
 }
 
