@@ -444,3 +444,27 @@ footer .social-icons a:hover img {
 }
 
 
+/* ======================================
+  📱 Responsive Fix for Image Gallery
+====================================== */
+@media (max-width: 700px) {
+  .image-gallery {
+    grid-template-columns: 1fr;     /* single column layout */
+    gap: 1.5rem;
+    padding: 0;                     /* remove any left/right offset */
+  }
+
+  .image-card {
+    width: 100%;                    /* ensure it fills available space */
+    margin: 0 auto;                 /* center it nicely */
+    box-sizing: border-box;
+  }
+
+  .gallery-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+}
+
