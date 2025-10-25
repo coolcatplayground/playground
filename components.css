@@ -1,0 +1,286 @@
+/* ===============================
+   🎛️ Component Styles
+   - Language selector
+   - Pickup / Diary content
+   - Collapsible archives
+   - Lab notes (Omnious Library)
+   - Image Lab gallery
+   =============================== */
+
+/* --- LANGUAGE SELECTOR --- */
+.language-cta {
+  position: absolute;
+  top: 0.8rem;
+  right: 1.2rem;
+  padding: 0.3rem 0.6rem;
+  background: var(--bg-accent);
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+  transition: all 0.3s ease;
+}
+
+.language-cta:hover {
+  background: var(--bg-panel);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(100, 255, 218, 0.5);
+}
+
+.language-cta p {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.lang-switcher {
+  font-size: 0.9rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-accent);
+  background: var(--bg-main);
+  color: var(--accent);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.lang-switcher:hover {
+  background: var(--bg-panel);
+  border-color: var(--accent);
+}
+
+/* --- PICKUP CONTENT (Top Page Highlight) --- */
+.cc-pickup {
+  background: var(--bg-panel);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px solid var(--accent);
+  box-shadow: 0 4px 10px var(--shadow-dark);
+  margin-bottom: 2rem;
+}
+
+.cc-pickup h3 {
+  color: var(--accent);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.pickup-date {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed var(--border-accent);
+  padding-bottom: 0.5rem;
+}
+
+.pickup-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.pickup-content p {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+/* --- COLLAPSIBLE ARCHIVE --- */
+.other-content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.other-content-item {
+  background: var(--bg-panel);
+  border-radius: 6px;
+  border-left: 3px solid var(--border-accent);
+  box-shadow: 0 2px 5px var(--shadow-soft);
+  overflow: hidden;
+}
+
+.archive-card-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.archive-card-header:hover {
+  background-color: var(--border-accent);
+}
+
+.toggle-icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease-in-out;
+  line-height: 1;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.content-wrapper {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+              opacity 0.4s ease-out;
+  padding: 0 1rem;
+}
+
+.content-wrapper.expanded { opacity: 1; }
+
+.item-content-padded { padding-bottom: 1rem; }
+
+/* --- LAB NOTE (Omnious Library) --- */
+.lab-note-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.lab-note {
+  background: var(--bg-panel);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.5rem;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 4px 10px var(--shadow-dark);
+  position: relative;
+}
+
+.lab-note::before {
+  content: attr(data-id);
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background: var(--bg-main);
+  color: var(--accent);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid var(--accent);
+}
+
+.lab-note h3 {
+  color: var(--text-light);
+  font-family: 'Kanit', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--border-accent);
+  padding-bottom: 0.3rem;
+}
+
+.lab-note p {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  margin-bottom: 0.8rem;
+}
+
+.lab-note strong {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.lab-note-image {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  margin: 1rem 0;
+  display: block;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.lab-note-metadata {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border-accent);
+}
+
+/* --- TABLE WRAPPER (Library) --- */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.lab-note-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.lab-note-table th,
+.lab-note-table td {
+  border: 1px solid var(--border-accent);
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  color: var(--text-dim);
+}
+
+.lab-note-table th {
+  background: var(--bg-panel);
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+  border-radius: 10px;
+}
+
+/* --- IMAGE LAB (Gallery) --- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.gallery-card {
+  background: var(--bg-panel);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--shadow-soft);
+  border: 1px solid var(--border-accent);
+  transition: transform 0.3s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(100, 255, 218, 0.2);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.gallery-caption {
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}

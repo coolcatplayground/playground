@@ -1,0 +1,139 @@
+/* ===============================
+   🧱 Layout Styles
+   - Header
+   - Navigation
+   - Main content + Sections
+   - Footer
+   =============================== */
+
+/* --- HEADER --- */
+header {
+  background: var(--bg-panel);
+  color: var(--text-light);
+  padding: 3rem 1rem 2rem 1rem;
+  text-align: center;
+  border-bottom: 3px solid var(--accent);
+  position: relative;
+  box-shadow: 0 4px 15px var(--shadow-dark);
+}
+
+header h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+  animation: fadeInDown 1s ease forwards;
+  opacity: 0;
+}
+
+header p {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: var(--text-light);
+  animation: fadeIn 1s 0.5s forwards;
+  opacity: 0;
+}
+
+/* --- NAVIGATION --- */
+nav {
+  background: var(--bg-accent);
+  display: flex;
+  justify-content: center;
+  padding: 0.7rem 0;
+  border-bottom: 3px solid var(--accent);
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  margin: 0.5rem 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: var(--bg-accent);
+  box-shadow: 0 2px 5px var(--shadow-soft);
+  transition: all 0.3s;
+  border: 1px solid var(--border-accent);
+  white-space: nowrap;
+}
+
+nav a.active {
+  background: var(--bg-panel);
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: inset 0 2px 5px var(--shadow-soft);
+}
+
+nav a:hover {
+  transform: translateY(-3px);
+  background: var(--bg-panel);
+  border-color: var(--accent);
+}
+
+/* --- MAIN CONTENT AREA --- */
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  min-height: 60vh;
+  transition: opacity 0.3s ease;
+}
+
+section {
+  background: var(--bg-accent);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px var(--shadow-soft);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  transition: all 0.8s ease;
+}
+
+section h2 {
+  margin-bottom: 1rem;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border-accent);
+  padding-bottom: 0.3rem;
+}
+
+section h3 {
+  color: var(--text-light);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* --- FOOTER --- */
+footer {
+  background: var(--bg-panel);
+  color: var(--text-light);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  border-top: 3px solid var(--accent);
+  box-shadow: 0 -4px 15px var(--shadow-dark);
+}
+
+footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+footer .social-icons a img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s;
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(285deg)
+          brightness(120%) contrast(100%);
+}
+
+footer .social-icons a:hover img {
+  transform: translateY(-2px);
+  filter: invert(70%) sepia(80%) saturate(500%) hue-rotate(120deg)
+          brightness(100%) contrast(100%);
+}

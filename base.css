@@ -1,0 +1,78 @@
+/* ===============================
+   🌈 CoolCat’s Hobby & Daily Diary
+   Base Styles
+   - Global resets
+   - Fonts & colors
+   - Key animations
+   =============================== */
+
+/* --- FONT & RESET --- */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, li, a, button {
+  font-family: 'Kanit', sans-serif;
+}
+
+/* --- GLOBAL COLOR VARIABLES --- */
+:root {
+  --bg-main: #0A192F;
+  --bg-panel: #1A2E4B;
+  --bg-accent: #0E223D;
+  --text-light: #E6E6FA;
+  --text-dim: #B3C1D9;
+  --accent: #64FFDA;
+  --border-accent: #2B4262;
+  --shadow-dark: rgba(0,0,0,0.5);
+  --shadow-soft: rgba(0,0,0,0.3);
+}
+
+/* --- BASE BODY STYLES --- */
+body {
+  background: var(--bg-main);
+  color: var(--text-light);
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background 0.3s;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--text-light);
+}
+
+/* --- ANIMATION KEYFRAMES --- */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; filter: blur(0px); }
+  to { opacity: 0; filter: blur(6px); }
+}
+
+/* --- GENERIC UTILITY CLASSES --- */
+.fade-in { animation: fadeIn 0.4s ease forwards; }
+.fade-out { animation: fadeOut 0.4s ease forwards; }
+
+.hidden { display: none; }
+
+html, body {
+  overflow-x: hidden;
+}
